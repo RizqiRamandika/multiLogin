@@ -7,6 +7,7 @@
         type="text"
         name="username"
         v-model="username"
+        required
         class="form_login"
         placeholder="Username atau email .."
       />
@@ -17,24 +18,11 @@
         name="password"
         v-model="password"
         class="form_login"
+        required
         placeholder="Password .."
       /><br />
 
-      <div
-        @click="login"
-        style="
-          background: #46de4b;
-          color: white;
-          text-align: center
-          font-size: 11pt;
-          width: 100%;
-          border: none;
-          border-radius: 3px;
-          padding: 10px 20px;
-        "
-      >
-        <bottom>REGISTER</bottom>
-      </div>
+      <input type="button" @click="reg()" class="tombol_login" value="REGISTER" />
 
       <br />
       <br />
@@ -52,14 +40,20 @@ export default {
     };
   },
   methods: {
-    async login() {
+    async reg() {
       const payload = {
         username: this.username,
         password: this.password,
         role: "siswa",
       };
-      await axios.post("http://localhost:3000/users", payload);
-      this.$router.push("/");
+      if (payload.username === "") {
+        alert("Username tidak boleh kosong");
+      } else if (payload.password === "") {
+        alert("password tidak boleh kosong");
+      } else {
+        await axios.post("http://localhost:3000/users", payload);
+        this.$router.push("/");
+      }
     },
   },
 };
