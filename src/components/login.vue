@@ -56,7 +56,7 @@ export default {
         alert("Username Or Password Not Found");
       } else {
         var convertToString = JSON.stringify(login);
-        sessionStorage.setItem("USER_DATA", convertToString);
+        localStorage.setItem("USER_DATA", convertToString);
         this.$router.push("/");
         window.location.reload();
       }

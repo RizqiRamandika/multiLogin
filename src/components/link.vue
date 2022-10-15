@@ -11,7 +11,7 @@ export default {
     name: "link",
     computed: {
         userRole() {
-            return JSON.parse(sessionStorage.getItem("USER_DATA")).role;
+            return JSON.parse(localStorage.getItem("USER_DATA")).role;
         },
     },
 };

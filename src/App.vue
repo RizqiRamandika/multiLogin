@@ -74,12 +74,12 @@ export default {
   name: "App",
   computed: {
     logout() {
-      return JSON.parse(sessionStorage.getItem("USER_DATA"));
+      return JSON.parse(localStorage.getItem("USER_DATA"));
     },
   },
   methods: {
     out() {
-      sessionStorage.clear();
+      localStorage.clear();
     },
   },
 };
